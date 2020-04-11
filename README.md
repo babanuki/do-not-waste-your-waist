@@ -13,14 +13,16 @@
    * 요통 관련 환자의 증가
     ![Alt text](/yo.jpg)
     ![Alt text](/yo1.jpg)
+    
+### 현재의 해결 방안
    * 복대가 조아
    
    
 ### Painpoint
    
 ##### 복대의 단점
-    ![Alt text](/bok.jpg)
-    ![Alt text](/bok1.jpg)
+   ![Alt text](/bok.jpg)
+   ![Alt text](/bok1.jpg)
    * 일시적 착용은 허리 부담을 덜어주는데, 장시간 착용시 복근과 기립근이 약해져 또 다른 통증을 유발
 ##### 뒤틀어진 자세
    * 척추 측만증, 허리디스크를 유발 / 악화
