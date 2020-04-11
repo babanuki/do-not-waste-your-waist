@@ -6,7 +6,7 @@
 
 항상 허리가 아픈 현대인을 위해서..
  
-### 우리 몸의 대들보인 허리!  최근 현대인들의 허리 건강에 적신호가 켜졌다!
+### 우리 몸의 대들보인 허리!  현대인들의 허리 건강에 적신호가 켜졌다!
    * 인구 고령화로 인해서 요통 환자들이 늘고 있다.
     <center><img src="images/yo.jpg" width="80%" height="80%" title="News" alt="News"></center></img>
     <center><img src="images/yo1.jpg" width="80%" height="80%" title="News" alt="News"></center></img>
