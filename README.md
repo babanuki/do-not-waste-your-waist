@@ -69,9 +69,9 @@
   * Node.js / Express-Framework
   * Python3.8 (Keras)
   * HTTP / PHP
-  * Github (pull request)
+  * Github (pull request)<br/><br/>
   
   |Date|Event|
-  |:------------:|:--------------:|
-  |2020.04.09.|what|
+  |:------------:|:-------------------:|
+  |2020.04.09.|프로젝트 컨셉 회의|
   |2020.04.11.|MD 파일 작성|
