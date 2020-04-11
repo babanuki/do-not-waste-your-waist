@@ -53,8 +53,11 @@
   
 ### Team
   * 김주현 
+   - Deep Learning 모델 구축
   * 박영재 
+   - Sensor - DB 네트워킹
   * 전범준 
+   - Web Server 관리 및 User Experience
   
 ## 개발환경
   * Arduino (Gyro, Acceleration sensor)
