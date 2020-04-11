@@ -48,7 +48,7 @@
   * 전범준
   
 ## 개발환경
-  * Arduino (Gyro sensor)
+  * Arduino (Gyro, Acceleration sensor)
   * MySQL
   * Node.js / Express-Framework
   * Python3.8 (Keras)
