@@ -8,15 +8,15 @@
  
 ### 우리 몸의 대들보인 허리!  최근 현대인들의 허리 건강에 적신호가 켜졌다!
    * 인구 고령화로 인해서 요통 환자들이 늘고 있다.
-    ![Alt text](images/yo.jpg)
-    ![Alt text](images/yo1.jpg)
+    <center><img src="images/yo.jpg" width="60%" height="60%" title="News" alt="News"></center></img>
+    <center><img src="images/yo1.jpg" width="80%" height="80%" title="News" alt="News"></center></img>
     
 ### 어떻게 해결하고 있을까?
    * 다음은 허리의 부담을 완화해주는 허리 보호대를 착용하여 해결하고 있는 모습이다.
     <center><img src="images/news.jpg" width="60%" height="60%" title="News" alt="News"></center></img>
 ##### * 복대의 단점
    <center><img src="images/bok.jpg" width="60%" height="60%" title="News" alt="News"></center></img>
-   ![Alt text](images/bok1.jpg)
+   <center><img src="images/bok1.jpg" width="80%" height="80%" title="News" alt="News"></center></img>
    * 일시적인 착용은 허리의 부담을 덜어줄 수 있지만, 장시간 복대에 의존하게 되면 복근과 기립근이 약해져 또 다른 통증을 유발한다!
 ##### * 뒤틀어진 자세
    * 척추 측만증과 허리디스크를 초래할 수 있다.
