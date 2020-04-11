@@ -33,7 +33,7 @@
   * 에어 펌프를 이용하여, 경고 신호가 발생했을 때에 복대의 기능을 적용할 수 있도록 한다.
   
 ### 시스템 구성도
-   <img src="/system.jpg" width="50%" height="50%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
+   <img src="/system.jpg" width="70%" height="70%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
   
 ### 구현 방법
   1. 자세 모니터링 : 자이로 센서, 가속도 센서
