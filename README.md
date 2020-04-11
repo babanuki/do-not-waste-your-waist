@@ -5,20 +5,17 @@
 ------------------------
 
 항상 허리가 아픈 현대인을 위해서..
-
-### 문제 인식
-
-
-   * 우리 몸의 대들보인 허리! 최근 현대인들의 허리 건강에 적신호가 켜졌다!
+ 
+### 우리 몸의 대들보인 허리!  최근 현대인들의 허리 건강에 적신호가 켜졌다!
    * 인구 고령화로 인해서 요통 환자들이 늘고 있다.
-    ![Alt text](/yo.jpg)
-    ![Alt text](/yo1.jpg)
+    ![Alt text](images/yo.jpg)
+    ![Alt text](images/yo1.jpg)
     
 ### 어떻게 해결하고 있을까?
    * 다음은 허리의 부담을 완화해주는 허리 보호대를 착용하여 해결하고 있는 모습이다.
-    <center><img src="/news.jpg" width="40%" height="40%" title="News" alt="News"></center></img>
+    <center><img src="images/news.jpg" width="60%" height="60%" title="News" alt="News"></center></img>
 ##### 복대의 단점
-   ![Alt text](/bok.jpg)
+   <center><img src="images/bok.jpg" width="60%" height="60%" title="News" alt="News"></center></img>
    ![Alt text](/bok1.jpg)
    * 일시적인 착용은 허리의 부담을 덜어줄 수 있지만, 장시간 복대에 의존하게 되면 복근과 기립근이 약해져 또 다른 통증을 유발한다!
 ##### 뒤틀어진 자세
@@ -44,17 +41,19 @@
   2. 사용자가 설정한 압력을 토대로 LSTM 모델을 업데이트한다.<br><br>
   
   * 자세 모니터링 시스템
-  1. 1분 간격으로, 센서 데이터를 Database에 누적시킨다.
-  2. 사용자가 Web Server에 접속하면, Database 값을 토대로 
-  3. 
+  1. 1분 간격으로 센서 데이터를 Database에 누적시킨다.
+  2. Web Server에서 Database 값을 이용하여 추정한 사용자의 자세를 볼 수 있게 한다.
+  3. 24시간 동안의 사용자의 자세를 평가한다.
   
 ### 성과
-  복대의 장점만을 살려서, 직관적인 보조작동을 가능케한다.
+  * 복대의 압력을 상황에 맞게 조절해줌으로써, 직관적인 보조작동을 가능하게 한다.
+  * 사용자가 본인의 자세를 파악함으로써, 원활한 자세 교정이 이루어질 수 있다.
+  * 
   
 ### Team
-  * 김주현
-  * 박영재
-  * 전범준
+  * 김주현 
+  * 박영재 
+  * 전범준 
   
 ## 개발환경
   * Arduino (Gyro, Acceleration sensor)
