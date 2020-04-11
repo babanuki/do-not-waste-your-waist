@@ -52,15 +52,16 @@
   * 사용자가 본인의 자세를 파악함으로써, 원활한 자세 교정이 이루어질 수 있다.
   
 ### Team
+
 <img src="images/kim.jpg" width="50px" height="50px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
   * 김주현 <br/>
-    Deep Learning 모델 구축<br/>
+    Deep Learning 모델 구축<br/><br/>
 <img src="images/park.jpg" width="50px" height="50px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img> 
   * 박영재 <br/>
-    Sensor - DB 네트워킹<br/>
+    Sensor - DB 네트워킹<br/><br/>
 <img src="images/jeon.jpg" width="50px" height="50px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
   * 전범준 <br/>
-    Web Server 관리 및 User Experience<br/>
+    Web Server 관리 및 User Experience<br/><br/>
   
 ## 개발환경
   * Arduino (Gyro, Acceleration sensor)
