@@ -12,8 +12,10 @@
    * 올바르지 못한 자세로 인해, 현대인들의 허리 부담이 증가
    * 요통 관련 환자의 증가
     ![Alt text](/yo.jpg)
+    ![Alt text](/yo1.jpg)
    * 복대의 문제점
     ![Alt text](/bok.jpg)
+    ![Alt text](/bok1.jpg)
  
     
 ### Painpoint
