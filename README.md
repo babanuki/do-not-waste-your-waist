@@ -18,7 +18,7 @@
 ##### 복대의 단점
    <center><img src="images/bok.jpg" width="60%" height="60%" title="News" alt="News"></center></img>
    <center><img src="images/bok1.jpg" width="80%" height="80%" title="News" alt="News"></center></img>
-   * 일시적인 착용은 허리의 부담을 덜어줄 수 있지만, 장시간 복대에 의존하게 되면 복근과 기립근이 약해져 또 다른 통증을 유발한다!
+   * 일시적인 착용은 허리의 부담을 덜어줄 수 있지만, 장시간 의존하게 되면 복근과 기립근이 약해져 또 다른 통증을 유발한다!
    
 ##### 뒤틀어진 자세 
    * 척추 측만증과 허리디스크를 초래할 수 있다.
