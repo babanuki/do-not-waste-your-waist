@@ -11,10 +11,10 @@
 
    * 올바르지 못한 자세로 인해, 현대인들의 허리 부담이 증가
    * 요통 관련 환자의 증가
-    사진
+    ![Alt text](/do-not-waste-your-waist/yo.jpg)
    * 복대의 문제점
-    사진
-    사진
+    ![Alt text](/do-not-waste-your-waist/bok.jpg)
+ 
     
 ### Painpoint
 ##### 뒤틀어진 자세
