@@ -56,7 +56,7 @@
   * 김주현 (팀장) <br/>
 <img src="images/kim.jpg" width="100px" height="100px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img> <br>
     Deep Learning 모델 구축<br/><br/>
-  * 박영재 <br/>
+  * 박영재 (Committer) <br/>
 <img src="images/park.jpg" width="100px" height="100px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img> <br>
     Sensor - DB 네트워킹<br/><br/>
   * 전범준 <br/>
