@@ -69,7 +69,7 @@
   * Node.js / Express-Framework
   * Python3.8 (Keras)
   * HTTP / PHP
-  * Github (pull request)<br/><br/>
+  * Github (pull request)<br/>
   
   |Date|Event|
   |:------------:|:-------------------:|
