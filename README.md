@@ -31,7 +31,7 @@
     자신의 문제점을 파악함으로써 올바른 자세로 교정할 수 있다!
   
 ### 프로젝트 설명
-  <center><img src="images/system2.jpg" width="80%" height="70%" title="System" alt="System"></center></img>
+  <center><img src="images/system.jpg" width="80%" height="70%" title="System" alt="System"></center></img>
   
   * 자동 조절 시스템
   1. 복대에 부착된 센서로부터 사용자의 자세를 추정한다.
