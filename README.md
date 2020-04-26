@@ -62,13 +62,25 @@
 
   * 김주현 (팀장) <br/>
 <img src="images/kim.jpg" width="100px" height="100px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img> <br>
-    Deep Learning 모델 구축<br/><br/>
+    팀장(발표)
+    일정(Milestone) 관리
+    딥러닝 시스템 구축
+    딥러닝 데이터 수집
+    기업 벤치마킹<br/><br/>
   * 박영재 (Committer) <br/>
 <img src="images/park.jpg" width="100px" height="100px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img> <br>
-    Sensor - DB 네트워킹<br/><br/>
+    데이터베이스 구축
+    데이터 가공
+    센서 네트워킹
+    테스터
+    Committer<br/><br/>
   * 전범준 <br/>
 <img src="images/jeon.jpg" width="100px" height="100px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img> <br>
-    Web Server 관리 및 User Experience<br/><br/>
+    서버 구축
+    웹서버 디자인
+    서버-데이터베이스간 네트워킹
+    에어 펌프 연결
+    제품 관리<br/><br/>
   
 ## 개발환경
   * Arduino (Gyro, Acceleration sensor)
