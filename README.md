@@ -62,24 +62,24 @@
 
   * 김주현 (팀장) <br/>
 <img src="images/kim.jpg" width="100px" height="100px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img> <br>
-    팀장(발표)
-    일정(Milestone) 관리
-    딥러닝 시스템 구축
-    딥러닝 데이터 수집
+    팀장(발표)<br>
+    일정(Milestone) 관리<br>
+    딥러닝 시스템 구축<br>
+    딥러닝 데이터 수집<br>
     기업 벤치마킹<br/><br/>
   * 박영재 (Committer) <br/>
 <img src="images/park.jpg" width="100px" height="100px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img> <br>
-    데이터베이스 구축
-    데이터 가공
-    센서 네트워킹
-    테스터
+    데이터베이스 구축<br>
+    데이터 가공<br>
+    센서 네트워킹<br>
+    테스터<br>
     Committer<br/><br/>
   * 전범준 <br/>
 <img src="images/jeon.jpg" width="100px" height="100px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img> <br>
-    서버 구축
-    웹서버 디자인
-    서버-데이터베이스간 네트워킹
-    에어 펌프 연결
+    서버 구축<br>
+    웹서버 디자인<br>
+    서버-데이터베이스간 네트워킹<br>
+    에어 펌프 연결<br>
     제품 관리<br/><br/>
   
 ## 개발환경
