@@ -1,8 +1,3 @@
-/*
- * made by codingbird
- * Copyright 2020. codingbird All rights reserved 
- */
-
 #include<Wire.h>
 
 const int MPU_ADDR = 0x68;
