@@ -1,10 +1,76 @@
-// 이전 캡스톤 실습 때 사용했던 코드를 그대로 사용함.
-// 이후 논의를 통해 바꿔갈 예정임.
-
+  
 <html>
 <head>
   <meta http-equiv="refresh" content="10">
+  <style type="text/css">
+    body{
+	    background-color:#888888;
+            box-sizing:border-box;
+    }
+    .main{
+	    background-color:#444444;
+	    margin:0 auto;
+    }
+    section{
+	    display:none;
+    }
+    input{
+	    display:none;
+    }
+    label{
+	    display:inline-block;
+	    padding:20px 20px;
+	    font-weight:600;
+	    color:#FFFFFF;
+    }
+    label:hover{
+	    color:#1e8cdd;
+	    cursor:pointer;
+    }
+    input:checked+label{
+	    color:#666;
+    }
+    #tab_graph:checked ~ #graph_,
+    #tab_point:checked ~ #point_,
+    #tab_tips:checked ~ #tips_{
+	    display:block;
+    }
+
+    #graph_{
+	    display:inline_block;
+	    position:relative;
+    }
+
+  </style>
+
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
   <script type="text/javascript" src="http://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.main').width($(window).width());
+			$(window).resize(function(){
+				$('.main').width($(window).width());
+			});
+		});
+	</script>
+</head>
+<body>
+    <div class="main">
+	    <input id="tab_graph" type="radio" name="tab" checked="checked">
+	    <label for="tab_graph">Graph</label>
+
+      <input id="tab_point" type="radio" name="tab">
+      <label for="tab_point">Point</label>
+
+	    <input id="tab_tips" type="radio" name="tab">
+	    <label for="tab_tips">Tips</label>
+
+	<section id="tips_">
+		<h1>Here is a tip for you today!</h1>
+	</section>
+
+
+	  <section id="graph_">
     <script type="text/javascript">
       google.charts.load('current', {'packages':['line']});
       google.charts.setOnLoadCallback(drawChart);
@@ -22,8 +88,8 @@
           title: 'Sample Sensor Data Graph',
           subtitle: 'Degree for X-axis & Y-axis'
         },
-        width: 1024,
-        height: 512,
+        width: window.innerWidth-10,
+        height: window.innerHeight/2,
         axes: {
           x: {
             0: {side: 'bottom'}
@@ -36,8 +102,9 @@
       chart.draw(data, google.charts.Line.convertOptions(options));
     }
   </script>
-</head>
-<body>
   <div id="line_top_x"></div>
+  </section>
+    </div>
+
 </body>
 </html>
