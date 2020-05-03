@@ -53,7 +53,7 @@ void loop() {
   angleAcX = atan(-AcY / sqrt(pow(AcX, 2) + pow(AcZ, 2)));
   angleAcX *= RADIAN_TO_DEGREE;
 
-  angleGyX += ((GyX - baseGyX) / DEGREE_PER_SECOND) * dt;
+  angleGyX = ((GyX - baseGyX) / DEGREE_PER_SECOND) * dt;
 
   angleTmp = angleFiX + angleGyX * dt;
   angleFiX = ALPHA * angleTmp + (1.0 - ALPHA) * angleAcX;
@@ -64,7 +64,7 @@ void loop() {
   angleAcY = atan(-AcX / sqrt(pow(AcY, 2) + pow(AcZ, 2)));
   angleAcY *= RADIAN_TO_DEGREE;
 
-  angleGyY += ((GyY - baseGyY) / DEGREE_PER_SECOND) * dt;
+  angleGyY = ((GyY - baseGyY) / DEGREE_PER_SECOND) * dt;
 
   angleTmp = angleFiY + angleGyY * dt;
   angleFiY = ALPHA * angleTmp + (1.0 - ALPHA) * angleAcY;
