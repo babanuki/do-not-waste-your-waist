@@ -1,10 +1,16 @@
 #include<Wire.h>
 #include <WiFi.h>
+#include<analogWrite.h>
 #include <HTTPClient.h>
 
 const int MPU_ADDR = 0x68;
 int16_t AcX, AcY, AcZ, Tmp, GyX, GyY, GyZ;
 int time_seq = 0;
+const int relay_vlt=4;
+const int relay_gnd=16;
+const int relay_sig=5;
+const int gyro_vlt=15;
+const int gyro_gnd=2;
 
 double angleAcX, angleAcY, angleAcZ;
 double angleGyX, angleGyY, angleGyZ;
@@ -21,17 +27,26 @@ double dt = 0;
 double baseAcX, baseAcY, baseAcZ;
 double baseGyX, baseGyY, baseGyZ;
 
-const char* ssid="Test";
-const char* password="12312356";
+const char* ssid="zizinuki";
+const char* password="24242424";
 
 String Url = "http://ec2-54-180-101-207.ap-northeast-2.compute.amazonaws.com:8083/degree?x=";
 
 void setup() {
-  initSensor();
-  Serial.begin(115200);
-  calibrateSensor();
-  past = millis();
 
+  pinMode(gyro_vlt, OUTPUT);
+  digitalWrite(gyro_vlt, 1);
+  pinMode(gyro_gnd, OUTPUT);
+  digitalWrite(gyro_gnd, 0);
+  
+  pinMode(relay_vlt, OUTPUT);
+  digitalWrite(relay_vlt, 1);
+  pinMode(relay_gnd, OUTPUT);
+  digitalWrite(relay_gnd, 0);
+  pinMode(relay_sig, OUTPUT);
+  
+  Serial.begin(115200);
+  
   WiFi.begin(ssid, password);
 
   while(WiFi.status() != WL_CONNECTED){
@@ -39,6 +54,10 @@ void setup() {
     Serial.println("Connecting to WiFi...");
    }
    Serial.println("Connected!!");
+   
+  initSensor();
+  calibrateSensor();
+  past = millis();
 }
 
 void loop() {
@@ -71,7 +90,20 @@ void loop() {
   Serial.printf("  Y: %f\n", angleFiY);
 
   if (!time_seq) { 
-    http.begin(Url + angleFiX + "&y=" + angleFiY);
+    double temp=(-1)*angleFiY;
+
+    if(angleFiX>-15 && angleFiX<15 && angleFiY<-80){
+  Serial.printf(" normal!!!!\n");
+
+     digitalWrite(relay_sig, 0);   
+    }
+    else{
+  Serial.printf(" trash!!!!\n");
+
+     digitalWrite(relay_sig, 1);     //시그널주면 릴레이가 꺼짐
+    }
+    
+    http.begin(Url + angleFiX + "&y=" + temp);
     http.GET();
   }
 }
