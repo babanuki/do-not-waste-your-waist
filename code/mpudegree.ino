@@ -67,8 +67,8 @@ void loop() {
   getDT();
   double angleTmp;
   HTTPClient http;
+  
 //x
-
   angleAcX = atan(-AcY / sqrt(pow(AcX, 2) + pow(AcZ, 2)));
   angleAcX *= RADIAN_TO_DEGREE;
 
@@ -79,7 +79,6 @@ void loop() {
   Serial.printf("X: %f", angleFiX);
 
 //y
-
   angleAcY = atan(-AcX / sqrt(pow(AcY, 2) + pow(AcZ, 2)));
   angleAcY *= RADIAN_TO_DEGREE;
 
@@ -92,16 +91,9 @@ void loop() {
   if (!time_seq) { 
     double temp=(-1)*angleFiY;
 
-    if(angleFiX>-15 && angleFiX<15 && angleFiY<-80){
-  Serial.printf(" normal!!!!\n");
-
-     digitalWrite(relay_sig, 0);   
-    }
-    else{
-  Serial.printf(" trash!!!!\n");
-
-     digitalWrite(relay_sig, 1);     //시그널주면 릴레이가 꺼짐
-    }
+    // If relay_sig is HIGH, then turn pump off.
+    if(angleFiX>-15 && angleFiX<15 && angleFiY<-80) digitalWrite(relay_sig, 0);   
+    else digitalWrite(relay_sig, 1);
     
     http.begin(Url + angleFiX + "&y=" + temp);
     http.GET();
