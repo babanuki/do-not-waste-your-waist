@@ -1,0 +1,46 @@
+    body{
+	    background-color:#888888;
+            box-sizing:border-box;
+    }
+    .main{
+	    background-color:#CCCCCC;
+	    margin:0 auto;
+    }
+    section{
+	    display:none;
+	    color:#000000;
+	    
+    }
+    input{
+	    display:none;
+    }
+    label{
+	    display:inline-block;
+	    padding:20px 20px;
+	    font-weight:600;
+	    color:#000000;
+    }
+    label:hover{
+	    color:#AA3333;
+	    background-color:#777777;
+	    cursor:pointer;
+    }
+    input:checked+label{
+	    color:#FF0000;
+	    background-color:#222222;
+    }
+
+    #tab_nothing:checked ~ #nothing_,
+    #tab_point:checked ~ #point_,
+    #tab_tips:checked ~ #tips_{
+	    display:block;
+	    background-color:'%color%';
+    }
+    #tab_graph:checked ~ #graph_{
+	    display:block;
+    }
+
+    #graph_{
+	    display:inline_block;
+	    position:relative;
+    }
