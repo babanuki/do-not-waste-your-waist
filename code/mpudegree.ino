@@ -1,16 +1,16 @@
 #include<Wire.h>
 #include <WiFi.h>
-#include<analogWrite.h>
 #include <HTTPClient.h>
 
 const int MPU_ADDR = 0x68;
 int16_t AcX, AcY, AcZ, Tmp, GyX, GyY, GyZ;
 int time_seq = 0;
-const int relay_vlt=4;
-const int relay_gnd=16;
-const int relay_sig=5;
-const int gyro_vlt=15;
-const int gyro_gnd=2;
+
+//자이로, 릴레이 핀번호
+//자이로 SCL:22, SDA:21
+const int relay_sig=15;
+const int gyro_vlt=23;
+const int gyro_gnd=19;
 
 double angleAcX, angleAcY, angleAcZ;
 double angleGyX, angleGyY, angleGyZ;
@@ -27,8 +27,10 @@ double dt = 0;
 double baseAcX, baseAcY, baseAcZ;
 double baseGyX, baseGyY, baseGyZ;
 
-const char* ssid="zizinuki";
-const char* password="24242424";
+
+// WIFI setting
+const char* ssid="U+NetD913";
+const char* password="4000015816";
 
 String Url = "http://ec2-54-180-101-207.ap-northeast-2.compute.amazonaws.com:8083/degree?x=";
 
@@ -39,10 +41,6 @@ void setup() {
   pinMode(gyro_gnd, OUTPUT);
   digitalWrite(gyro_gnd, 0);
   
-  pinMode(relay_vlt, OUTPUT);
-  digitalWrite(relay_vlt, 1);
-  pinMode(relay_gnd, OUTPUT);
-  digitalWrite(relay_gnd, 0);
   pinMode(relay_sig, OUTPUT);
   
   Serial.begin(115200);
@@ -67,6 +65,11 @@ void loop() {
   getDT();
   double angleTmp;
   HTTPClient http;
+
+//user_id 설정
+//1:PARK 2:JEON 3:KIM
+  int user_id=1;
+  
   
 //x
   angleAcX = atan(-AcY / sqrt(pow(AcX, 2) + pow(AcZ, 2)));
@@ -88,14 +91,19 @@ void loop() {
   angleFiY = ALPHA * angleTmp + (1.0 - ALPHA) * angleAcY;
   Serial.printf("  Y: %f\n", angleFiY);
 
-  if (!time_seq) { 
-    double temp=(-1)*angleFiY;
+  if (!time_seq) {
+    double temp=(-1)*angleFiY; //y각도 양수로 바꿔줌
 
-    // If relay_sig is HIGH, then turn pump on. Otherwise, turn pump off.
-    if(angleFiX>-15 && angleFiX<15 && angleFiY<-80) digitalWrite(relay_sig, 0);   
-    else digitalWrite(relay_sig, 1);
+    if(angleFiX>-15 && angleFiX<15 && angleFiY<-80){
+     Serial.printf(" normal!!!!\n");
+     digitalWrite(relay_sig, 0);   
+    }
+    else{
+     Serial.printf(" trash!!!!\n");
+     digitalWrite(relay_sig, 1); 
+    }
     
-    http.begin(Url + angleFiX + "&y=" + temp);
+    http.begin(Url + angleFiX + "&y=" + temp + "&xa=" + AcX + "&ya=" + AcY + "&id=" + user_id);
     http.GET();
   }
 }
