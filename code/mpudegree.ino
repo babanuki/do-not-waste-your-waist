@@ -15,6 +15,11 @@ const int gyro_gnd=19;
 double angleAcX, angleAcY, angleAcZ;
 double angleGyX, angleGyY, angleGyZ;
 double angleFiX, angleFiY, angleFiZ;
+double x_delta, y_delta, x_deltaavg=0, y_deltaavg=0;
+double x_temp=0, y_temp=0;
+
+int sit_flag=1; // 0 : 섬 1: 앉음
+int num=0;
 
 const double RADIAN_TO_DEGREE = 180 / 3.14159;
 const double DEGREE_PER_SECOND = 32767 / 250;
@@ -64,6 +69,8 @@ void loop() {
   getData();
   getDT();
   double angleTmp;
+  double x_accel;
+  double y_accel;
   HTTPClient http;
 
 //user_id 설정
@@ -79,6 +86,7 @@ void loop() {
 
   angleTmp = angleFiX + angleGyX * dt;
   angleFiX = ALPHA * angleTmp + (1.0 - ALPHA) * angleAcX;
+  x_accel  = ((GyX - baseGyX) / DEGREE_PER_SECOND);
   Serial.printf("X: %f", angleFiX);
 
 //y
@@ -89,10 +97,27 @@ void loop() {
 
   angleTmp = angleFiY + angleGyY * dt;
   angleFiY = ALPHA * angleTmp + (1.0 - ALPHA) * angleAcY;
+  y_accel  = (-1)*((GyY - baseGyY) / DEGREE_PER_SECOND);
   Serial.printf("  Y: %f\n", angleFiY);
+  
+  if(!(time_seq%100)){
+//0.1초전 값과의 차이
+   x_delta = angleFiX - x_temp;
+   y_delta = (-1)*angleFiY - y_temp;  
+
+    x_deltaavg += x_delta;
+   y_deltaavg += y_delta;
+   num += 1;
+  
+//0.1초전 값
+   x_temp = angleFiX;
+   y_temp = (-1)*angleFiY;
+  }
 
   if (!time_seq) {
-    double temp=(-1)*angleFiY; //y각도 양수로 바꿔줌
+    double temp = (-1)*angleFiY; //y각도 양수로 바꿔줌
+    x_deltaavg = x_deltaavg/(double)num;
+    y_deltaavg = y_deltaavg/(double)num;
 
     if(angleFiX>-15 && angleFiX<15 && angleFiY<-80){
      Serial.printf(" normal!!!!\n");
@@ -103,9 +128,15 @@ void loop() {
      digitalWrite(relay_sig, 1); 
     }
     
-    http.begin(Url + angleFiX + "&y=" + temp + "&xa=" + AcX + "&ya=" + AcY + "&id=" + user_id);
+    http.begin(Url + angleFiX + "&y=" + temp + "&xa=" + x_accel + "&ya=" + y_accel + "&id=" + user_id + "&xd=" + x_delta + "&yd=" + y_delta + "&xda=" + x_deltaavg + "&yda=" + y_deltaavg + "&sit=" + sit_flag);
     http.GET();
+
+    num=0;
+    x_deltaavg=0;
+    y_deltaavg=0;
+    
   }
+  
 }
 
 void initSensor() {
