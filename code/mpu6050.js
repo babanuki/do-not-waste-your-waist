@@ -24,7 +24,7 @@ app.get('/degree', function(req, res) {
 
 	obj.x_angle = req.query.x;
 	obj.y_angle = req.query.y;
-	obj.time=moment().format('YYYY,MM,DD,hh,mm,ss');
+	obj.time=""+moment().format('YYYY-MM-DD HH:mm:ss');
 
 	connection.query("insert into degree set ?", obj, function(err, rows, cols) {
 		if (err) throw err;
