@@ -91,7 +91,7 @@ void loop() {
   if (!time_seq) { 
     double temp=(-1)*angleFiY;
 
-    // If relay_sig is HIGH, then turn pump off.
+    // If relay_sig is HIGH, then turn pump on. Otherwise, turn pump off.
     if(angleFiX>-15 && angleFiX<15 && angleFiY<-80) digitalWrite(relay_sig, 0);   
     else digitalWrite(relay_sig, 1);
     
