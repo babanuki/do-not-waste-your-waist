@@ -1,0 +1,139 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="/css/style.css">
+		<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+		<script type="text/javascript" src="http://www.gstatic.com/charts/loader.js"></script>
+
+		<script type="text/javascript" id="graph">
+                    google.charts.load('current', {'packages':['line']});
+                    google.charts.setOnLoadCallback(drawChart);
+
+                    var data;
+                    var chart;
+                    var options;
+
+                    function drawChart() {
+                        data=new google.visualization.DataTable();
+
+                        data.addColumn('datetime', 'Date/Time');
+                        data.addColumn('number', 'X_ANGLE');
+                        data.addColumn('number', 'Y_ANGLE');
+
+                        data.addRows([
+                            <% let s=""; %>
+                            <% let comma=""; %>
+                            <% for(let i=0; i<datx.length; i++){ %>
+                            <%     s+=comma+"[new Date("+datx[i].time+"),"+datx[i].x_angle+","+datx[i].y_angle+"]"; %>
+                            <%     comma=","; %>
+                            <% } %>
+                            <%=s %>
+                        ]);
+
+                        options = {
+                                chart: {
+                                    title: 'Sample Sensor Data Graph',
+                                    subtitle: 'Degree for X-axis & Y-axis'
+                                },
+                                width: window.innerWidth-20,
+                                height: window.innerHeight/2,
+                                axes: {
+                                    x: {
+                                            0: {side: 'bottom'}
+                                    }
+                                },
+                                hAxis:{format:'yyyy-MM-dd HH:mm:ss'}
+                        };
+
+                        chart = new google.charts.Line(document.getElementById('line_top_x'));
+
+                        chart.draw(data, google.charts.Line.convertOptions(options));
+                    }
+		</script>
+
+
+		<title></title>
+
+	</head>
+
+	<body>
+		<script>
+			var cnt=0;
+
+                        function refreshF(){
+                                $("#point__").load(window.location.href+" #point__");
+                        }
+			
+			function divColor(x, y){
+				var color="";
+				
+				cnt+=1;
+				
+				var parent=document.getElementById("point__");
+				var lastx=x;
+				var lasty=y;
+				var newH=document.createElement("h3");				
+			        if(lastx>-15 && lastx<15 && lasty>80)
+			            color+="#00FF00";
+			        else if(lastx>-25 && lastx<25 && lasty>70)
+			            color+="#FFFF00";
+			        else
+			            color+="#FF0000";
+				
+/*				newH.style.backgroundColor=color;
+				newH.style.color="white";
+				newH.id=cnt;
+				newH.innerHTML="Last value - X : "+lastx+" | Y : "+lasty;
+				document.body.scrollTop=document.body.scrollHeight+50;
+*/				parent.style.backgroundColor=color;
+//				var p=document.getElementById("point__");
+//				p.appendChild(newH);
+			};
+
+			setInterval(refreshF, 100);
+                </script>
+
+		<div class="main" id="main_">
+			<input id="tab_nothing" type="radio" name="tab" checked="checked">
+		
+			<input id="tab_graph" type="radio" name="tab">
+			<label for="tab_graph">Graph</label>
+		
+			<input id="tab_point" type="radio" name="tab">
+			<label for="tab_point">Point</label>
+	
+			<input id="tab_tips" type="radio" name="tab">
+			<label for="tab_tips">Tips</label>
+			
+			<section id="nothing_">
+				<h1>Main Page</h1>
+			</section>
+			
+			<section id="graph_">	
+				<div id="line_top_x"/>
+			</section>
+
+		<section id="point_">
+				<div id="point__">
+				<h1>Last value - X : <%=datx[datx.length-1].x_angle %> | Y : <%=datx[datx.length-1].y_angle %>
+				<script>
+					divColor(<%=datx[datx.length-1].x_angle%>, <%=datx[datx.length-1].y_angle%>);
+				</script>
+</h1>
+				<h3>Comment : Just Test</h3>
+				</div>
+			</section>
+		
+			<section id="tips_">
+				<h1>Here are tips for you today</h1>
+			</section>
+
+<!--		<% if(locals.datx){ %>
+			<% for(let i=0; i<datx.length; i++){ %>
+				X : <%= datx[i].x_angle %><br>
+			<% } %>
+		<% } %>
+-->
+		</div>	
+	</body>
+
+</html>
