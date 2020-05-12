@@ -90,36 +90,36 @@ void loop() {
   Serial.printf("X: %f", angleFiX);
 
 //y
-  angleAcY = atan(-AcX / sqrt(pow(AcY, 2) + pow(AcZ, 2)));
+  angleAcY = atan(-AcZ / sqrt(pow(AcY, 2) + pow(AcX, 2)));
   angleAcY *= RADIAN_TO_DEGREE;
 
   angleGyY = ((GyY - baseGyY) / DEGREE_PER_SECOND) * dt;
 
   angleTmp = angleFiY + angleGyY * dt;
   angleFiY = ALPHA * angleTmp + (1.0 - ALPHA) * angleAcY;
-  y_accel  = (-1)*((GyY - baseGyY) / DEGREE_PER_SECOND);
+  y_accel  = ((GyY - baseGyY) / DEGREE_PER_SECOND);
   Serial.printf("  Y: %f\n", angleFiY);
   
   if(!(time_seq%100)){
 //0.1초전 값과의 차이
    x_delta = angleFiX - x_temp;
-   y_delta = (-1)*angleFiY - y_temp;  
+   y_delta = angleFiY - y_temp;  
 
-    x_deltaavg += x_delta;
+   x_deltaavg += x_delta;
    y_deltaavg += y_delta;
    num += 1;
   
 //0.1초전 값
    x_temp = angleFiX;
-   y_temp = (-1)*angleFiY;
+   y_temp = angleFiY;
   }
 
   if (!time_seq) {
-    double temp = (-1)*angleFiY; //y각도 양수로 바꿔줌
+    double temp = angleFiY; //y각도 양수로 바꿔줌
     x_deltaavg = x_deltaavg/(double)num;
     y_deltaavg = y_deltaavg/(double)num;
 
-    if(angleFiX>-15 && angleFiX<15 && angleFiY<-80){
+    if(angleFiX>-15 && angleFiX<15 && angleFiY<10 && angleFiY>-10){
      Serial.printf(" normal!!!!\n");
      digitalWrite(relay_sig, 0);   
     }
