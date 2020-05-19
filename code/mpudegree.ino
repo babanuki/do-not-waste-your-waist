@@ -1,6 +1,9 @@
 #include<Wire.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
+#include <esp_wifi.h>
+#include <WiFiClient.h>
+#include <ESP_WiFiManager.h>
 
 const int MPU_ADDR = 0x68;
 int16_t AcX, AcY, AcZ, Tmp, GyX, GyY, GyZ;
@@ -21,6 +24,10 @@ double x_temp=0, y_temp=0;
 int sit_flag=1; // 0 : 섬 1: 앉음
 int num=0;
 
+//user_id 설정
+//1:PARK 2:JEON 3:KIM
+int user_id;
+  
 const double RADIAN_TO_DEGREE = 180 / 3.14159;
 const double DEGREE_PER_SECOND = 32767 / 250;
 const double ALPHA = 1 / (1 + 0.04);
@@ -32,10 +39,7 @@ double dt = 0;
 double baseAcX, baseAcY, baseAcZ;
 double baseGyX, baseGyY, baseGyZ;
 
-
-// WIFI setting
-const char* ssid="U+NetD913";
-const char* password="4000015816";
+char id[20] = "Input_user_id";
 
 String Url = "http://ec2-54-180-101-207.ap-northeast-2.compute.amazonaws.com:8083/degree?x=";
 
@@ -49,14 +53,18 @@ void setup() {
   pinMode(relay_sig, OUTPUT);
   
   Serial.begin(115200);
-  
-  WiFi.begin(ssid, password);
 
-  while(WiFi.status() != WL_CONNECTED){
-    delay(1000);
-    Serial.println("Connecting to WiFi...");
-   }
-   Serial.println("Connected!!");
+  //wifimanager setting
+  ESP_WMParameter custom_id("id", "user_id", id, 21);
+  ESP_WiFiManager ESP_wifiManager("HURRYUP_WIFI");
+  ESP_wifiManager.addParameter(&custom_id);
+  
+  String AP_SSID = "UHRRYUP_WIFI";
+  ESP_wifiManager.autoConnect(AP_SSID.c_str());
+  Serial.println("WiFi connected!");
+
+  strncpy(id, custom_id.getValue(), sizeof(id));
+  sscanf(id, "%d", &user_id);
    
   initSensor();
   calibrateSensor();
@@ -73,10 +81,6 @@ void loop() {
   double y_accel;
   HTTPClient http;
 
-//user_id 설정
-//1:PARK 2:JEON 3:KIM
-  int user_id=1;
-  
   
 //x
   angleAcX = atan(-AcY / sqrt(pow(AcX, 2) + pow(AcZ, 2)));
@@ -130,6 +134,7 @@ void loop() {
     
     http.begin(Url + angleFiX + "&y=" + temp + "&xa=" + x_accel + "&ya=" + y_accel + "&id=" + user_id + "&xd=" + x_delta + "&yd=" + y_delta + "&xda=" + x_deltaavg + "&yda=" + y_deltaavg + "&sit=" + sit_flag);
     http.GET();
+  
 
     num=0;
     x_deltaavg=0;
