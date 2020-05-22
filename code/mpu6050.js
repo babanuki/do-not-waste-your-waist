@@ -24,6 +24,14 @@ app.get('/degree', function(req, res) {
 
 	obj.x_angle = req.query.x;
 	obj.y_angle = req.query.y;
+	obj.x_accel = req.query.xa;
+	obj.y_accel = req.query.ya;
+	obj.user_id = req.query.id;
+	obj.x_delta = req.query.xd;
+	obj.y_delta = req.query.yd;
+	obj.x_deltaavg = req.query.xda;
+	obj.y_deltaavg = req.query.yda;
+	obj.sit_flag = req.query.sit;
 	obj.time=""+moment().format('YYYY-MM-DD HH:mm:ss');
 
 	connection.query("insert into degree set ?", obj, function(err, rows, cols) {
