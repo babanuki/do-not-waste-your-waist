@@ -1,7 +1,7 @@
   
 <html>
 <head>
-  <meta http-equiv="refresh" content="1">
+	<!--  <meta http-equiv="refresh" content="1">-->
   <style type="text/css">
     body{
 	    background-color:#888888;
@@ -16,7 +16,7 @@
 	    color:#FFFFFF;
 	    background-color:#777777;
     }
-    input{
+    .main input{
 	    display:none;
     }
     label{
@@ -50,24 +50,11 @@
     }
 
   </style>
-
   <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
   <script type="text/javascript" src="http://www.gstatic.com/charts/loader.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$('.main').width($(window).width());
-			$(window).resize(function(){
-				$('.main').width($(window).width());
-			});
-
-		});
-
-		function refresh(){
-			$("#graph_").load(window.location.href+"#graph_");
-		}
-	</script>
 </head>
 <body>
+
     <div class="main" id="main_">
 	    <input id="tab_nothing" type="radio" name="tab">
 
@@ -119,7 +106,6 @@
             0: {side: 'bottom'}
           }
         },
-        hAxis:{format:'yyyy-MM-dd HH:mm:ss'}
       };
 
       var chart = new google.charts.Line(document.getElementById('line_top_x'));
