@@ -24,7 +24,7 @@ const float VCC = 4.98;
 const float R_DIV = 3230.0;
 
 const int err=100;
-const int pressure_default=1500;
+const int pressure_default=1000;
 int pressure;
 
 int fsrADC=0;
@@ -57,6 +57,7 @@ double baseGyX, baseGyY, baseGyZ;
 char id[20] = "Input_user_id";
 
 String Url = "http://ec2-54-180-101-207.ap-northeast-2.compute.amazonaws.com:8083/degree?x=";
+
 
 void setup() {
 
@@ -173,42 +174,59 @@ void loop() {
 
   int target;
   if (!time_seq) {
-    double temp = angleFiY; //y각도 양수로 바꿔줌
+    double temp = angleFiY;
+    double predictY;
     x_deltaavg = x_deltaavg/(double)num;
     y_deltaavg = y_deltaavg/(double)num;
 
+    
+    http.begin(Url + angleFiX + "&y=" + temp + "&xa=" + x_accel + "&ya=" + y_accel + "&id=" + user_id + "&xd=" + x_delta + "&yd=" + y_delta + "&xda=" + x_deltaavg + "&yda=" + y_deltaavg + "&sit=" + sit_flag);
+    int httpCode = http.GET();
+    String line;
+    if (httpCode>0){
+      line=http.getString();
+    }
+
+    line = line.substring(2, line.length() - 2);
+    predictY = line.toFloat();
+    Serial.println(temp);
+    Serial.println(predictY);
+
+    if(predictY!=0.0){
+      temp+=predictY;
+      temp/=2;
+    }
+
   if(sit_flag==0){
-      if(angleFiX>-15 && angleFiX<15 && angleFiY<10 && angleFiY>-10){
-      Serial.printf(" normal!!!!X_angle: %f\n Y_angle: %f\nfsr: %d\nsit_flag: %d\n",angleFiX, angleFiY, fsr_value, sit_flag);
+      if(angleFiX>-15 && angleFiX<15 && temp<10 && temp>-10){
+      Serial.printf(" normal!!!!X_angle: %f\n Y_angle: %f\nfsr: %d\nsit_flag: %d\n",angleFiX, temp, fsr_value, sit_flag);
       target=0;
      }
-     else if(angleFiY<20 && angleFiY>-20){
-      Serial.printf(" level1!!!!X_angle: %f\n Y_angle: %f\nfsr: %d\nsit_flag: %d\n",angleFiX, angleFiY, fsr_value, sit_flag);
+     else if(temp<20 && temp>-20){
+      Serial.printf(" level1!!!!X_angle: %f\n Y_angle: %f\nfsr: %d\nsit_flag: %d\n",angleFiX, temp, fsr_value, sit_flag);
       target=5000;
      }
      else{
-      Serial.printf(" level2!!!!X_angle: %f\n  Y_angle: %f\nfsr: %d\nsit_flag: %d\n",angleFiX, angleFiY, fsr_value, sit_flag);
+      Serial.printf(" level2!!!!X_angle: %f\n  Y_angle: %f\nfsr: %d\nsit_flag: %d\n",angleFiX, temp, fsr_value, sit_flag);
       target=10000;
      }
   }
   else{
-   if(angleFiX>-10 && angleFiX<10 && angleFiY<20 && angleFiY>-10){
-      Serial.printf(" normal!!!!X_angle: %f\n Y_angle: %f\nfsr: %d\nsit_flag: %d\n",angleFiX, angleFiY, fsr_value, sit_flag);
+   if(angleFiX>-10 && angleFiX<10 && temp<20 && temp>-10){
+      Serial.printf(" normal!!!!X_angle: %f\n Y_angle: %f\nfsr: %d\nsit_flag: %d\n",angleFiX, temp, fsr_value, sit_flag);
       target=0;    
    }
-   else if(angleFiX>-15 && angleFiX<15 && angleFiY<30 && angleFiY>-20){
-      Serial.printf(" normal!!!!X_angle: %f\n Y_angle: %f\nfsr: %d\nsit_flag: %d\n",angleFiX, angleFiY, fsr_value, sit_flag);
+   else if(angleFiX>-15 && angleFiX<15 && temp<30 && temp>-20){
+      Serial.printf(" normal!!!!X_angle: %f\n Y_angle: %f\nfsr: %d\nsit_flag: %d\n",angleFiX, temp, fsr_value, sit_flag);
       target=5000;    
    }
    else {
-      Serial.printf(" level2!!!!X_angle: %f\n  Y_angle: %f\nfsr: %d\nsit_flag: %d\n",angleFiX, angleFiY, fsr_value, sit_flag);
+      Serial.printf(" level2!!!!X_angle: %f\n  Y_angle: %f\nfsr: %d\nsit_flag: %d\n",angleFiX, temp, fsr_value, sit_flag);
       target=10000;    
    }
   }
+       
     
-    http.begin(Url + angleFiX + "&y=" + temp + "&xa=" + x_accel + "&ya=" + y_accel + "&id=" + user_id + "&xd=" + x_delta + "&yd=" + y_delta + "&xda=" + x_deltaavg + "&yda=" + y_deltaavg + "&sit=" + sit_flag);
-    http.GET();
-
     num=0;
     x_deltaavg=0;
     y_deltaavg=0;
