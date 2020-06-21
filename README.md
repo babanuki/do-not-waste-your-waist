@@ -33,7 +33,7 @@
 ### 프로젝트 설명
   <center><img src="images/system.jpg" width="80%" height="70%" title="System" alt="System"></center></img><br>
   
-  <center><img src="images/arduino_circuit5_30.jpg" width="80%" height="70%" title="System" alt="System"></center></img><br>
+  <center><img src="images/arduino_circuit5_30.jpg" width="50%" height="40%" title="Arduino" alt="Arduino"></center></img><br>
   
   * 자동 조절 시스템
   1. 복대에 부착된 센서로부터 사용자의 자세를 추정한다.
