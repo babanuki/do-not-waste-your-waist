@@ -31,7 +31,7 @@
     자신의 문제점을 파악함으로써 올바른 자세로 교정할 수 있다!
   
 ### 프로젝트 설명
-  <center><img src="images/system.jpg" width="80%" height="70%" title="System" alt="System"></center></img><br>
+  <center><img src="images/system_image.jpg" width="80%" height="70%" title="System" alt="System"></center></img><br>
   
   <center><img src="images/arduino_circuit5_30.jpg" width="50%" height="40%" title="Arduino" alt="Arduino"></center></img><br>
   
