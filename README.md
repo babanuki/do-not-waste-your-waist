@@ -58,6 +58,7 @@
 ----------
 ### Web 이미지
 <center><img src="images/web_image.jpg" width="80%" height="80%" title="News" alt="News"></center></img>
+http://54.180.101.207:8081/<br/>
 1. 사용자의 허리에 부담이 간 부분을 이미지를 통해 알려준다. <br/>
 2. 이 웹사이트를 통해 사용자가 자신의 허리 상태를 알 수 있다. <br/>
 
