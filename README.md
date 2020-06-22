@@ -23,7 +23,7 @@
    <center><img src="images/bok1.jpg" width="80%" height="80%" title="News" alt="News"></center></img>
    * 일시적인 착용은 허리의 부담을 덜어줄 수 있지만, 장시간 의존하게 되면 복근과 기립근이 약해져 또 다른 통증을 유발한다! <br/>
    
-   ## 뒤틀어진 자세 
+   # 뒤틀어진 자세 
    * 척추 측만증과 허리디스크를 초래할 수 있다.<br/>
    * 하지만, 자신의 자세가 올바른지 확인할 방법이 없다!<br/>
    
@@ -54,6 +54,14 @@
   2. Web Server에서 Database 값을 이용하여 추정한 사용자의 자세를 볼 수 있게 한다.
   3. 지난 24시간 동안의 사용자의 자세를 평가한다.
   
+제품 이미지
+----------
+# Web 이미지
+<center><img src="images/web_image.jpg" width="80%" height="80%" title="News" alt="News"></center></img>
+
+# 제품 이미지
+<center><img src="images/HurryUp.jpg" width="80%" height="80%" title="News" alt="News"></center></img>
+
 기대 성과
 --------
   * 내 몸에 맞는 복대를 찾자!<br>
